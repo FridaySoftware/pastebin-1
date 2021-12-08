@@ -1,6 +1,6 @@
 # Import flask and template operators
 from flask import Flask, render_template, session, jsonify
-
+import os
 # Import SQLAlchemy
 from flask_sqlalchemy import SQLAlchemy
 
@@ -11,6 +11,8 @@ app = Flask(__name__)
 
 # Configurations
 app.config.from_object('config')
+
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DATABASE_URL")
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
